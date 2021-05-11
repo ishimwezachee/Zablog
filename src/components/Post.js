@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link} from 'react-router-dom'
+import Navigation from './Navigation'
 const Post=()=>{
 const [state,setState]= useState({
     title:"",
@@ -18,10 +18,7 @@ const handleSubmit=(e)=>{
 
     return (
         <div className="post">
-          <Link
-          to="/"
-          >close</Link>
-          
+        <Navigation/>       
       <form>
       <input value={state.title} onChange={stateHandler} type="text" name="title" placeholder="Title"/>
         <br/>
