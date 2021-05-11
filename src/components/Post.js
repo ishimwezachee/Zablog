@@ -1,6 +1,31 @@
 import React,{useState} from 'react';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import {Input,TextField,FormControl,Button} from '@material-ui/core';
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles({
+  button:{
+    fontWeight:'bold'
+  },
+  post:{
+    display:"flex",
+    marginRight:'30%',
+    marginLeft:'30%'
+  },
+  // textArea:{
+  //   // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  //   border: 0,
+  //   borderRadius: 3,
+  //   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  //   color: 'white',
+  //   height: 200,
+  //   padding: '0 30px',
+  // }
+
+})
+
 const Post=()=>{
+  const classes = useStyles();
 const [state,setState]= useState({
     title:"",
     text:"",
@@ -17,17 +42,43 @@ const handleSubmit=(e)=>{
 }
 
     return (
-        <div className="post">
+        <div className="container">
         <Navigation/>       
-      <form>
-      <input value={state.title} onChange={stateHandler} type="text" name="title" placeholder="Title"/>
-        <br/>
-        <textarea value={state.text} onChange={stateHandler} type="text" name="text" placeholder="add content"/>
-        <br/>
-        <input value={state.author} onChange={stateHandler} type="text" name="author" placeholder="Author Name"/>
-        <br/>
-        <button type="submit" onClick={handleSubmit}>Post</button>  
-      </form>
+      <FormControl className={classes.post}>
+      <Input 
+      value={state.title} 
+      onChange={stateHandler} 
+      type="text" 
+      name="title" 
+      placeholder="Title"
+      />
+
+        <TextField 
+        value={state.text} 
+        onChange={stateHandler} 
+        id="outlined-basic"
+        variant="outlined"
+        placeholder="add content"
+        className={classes.textArea}
+        />
+        <Input 
+        value={state.author} 
+        onChange={stateHandler} 
+        type="text" 
+        name="author" 
+        placeholder="Author Name"
+          />
+     
+        <Button 
+        type="submit"
+         variant="contained" 
+         color="secondary" 
+         onClick={handleSubmit}
+         className={classes.button}
+         >
+           Post
+           </Button>  
+      </FormControl>
         </div>
     )
 }

@@ -40,7 +40,7 @@ const blogs=[
           <Home blogs={blogs}/>
         </Route>
         <Route path="/Post" >
-          <Post/>
+          <Post />
         </Route>
       </Switch>
     </Router>
