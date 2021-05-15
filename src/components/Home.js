@@ -1,19 +1,60 @@
 import React from 'react';
-import Navigationn from './Navigation'
+import { Button } from '@material-ui/core';
+import Navigationn from './Navigation';
+import { makeStyles } from "@material-ui/styles";
+import { Link } from 'react-router-dom';
 
-const Home=(props)=>{
+const useStyles = makeStyles({
+    button: {
+        fontWeight: 'bold',
+        margin: '10px',
+
+    },
+    link: {
+        textDecoration: 'none'
+    }
+})
+
+const Home = (props) => {
+    const classes = useStyles();
     return (
         <div>
-            <Navigationn/>
+            <Navigationn />
             <ul>
-           {props.blogs.map((blog)=>(
-               <li key={blog.id}>
-                <h2>{blog.title}</h2>
-                <p>{blog.content}</p>
-                <h4>{blog.author}</h4>
-               </li>
-           ))}
-           </ul>
+                {props.blogs.map((blog) => (
+                    <li key={blog.id}>
+                        <h2>{blog.title}</h2>
+                        <p>{blog.content}</p>
+                        <h4>- {blog.author}</h4>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="default"
+                        >
+                            Delete
+           </Button>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                        >
+                            edit
+           </Button>
+                    </li>
+
+                ))}
+            </ul>
+            <Link className={classes.link} to="/Post">
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                >
+                    New  Post
+           </Button>
+            </Link>
         </div>
     )
 }
