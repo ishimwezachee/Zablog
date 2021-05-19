@@ -1,37 +1,21 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import {useEffect,useState} from 'react';
+import db from './firebase';
 import Post from "./components/Post";
 import Home from "./components/Home";
 import "./App.css";
 
 function App() {
-const blogs=[
-  {
-    id:1,
-    title:"love",
-    content:"love is the feelings you get from your heart",
-    author:"Alice"
-  },
-  {
-    id:2,
-    title:"unit",
-    content:"love is the feelings you get from your heart",
-    author:"Geek"
-  },
-  {
-    id:3,
-    title:"work",
-    content:"work is the feelings you get from your heart",
-    author:"Divine"
-  },
-  {
-    id:4,
-    title:"sleeping",
-    content:"sleeping is the feelings you get from your heart",
-    author:"Umurerwa"
-  },
-]
-
+// data should be called from parent 
+const [blogs,setBlogs] =useState([])
+useEffect(()=>{
+db.collection('blogs')
+  .onSnapshot(onSnapshot=>{
+    // console.log(onSnapshot.docs.map(doc=> doc.data().blog))
+  setBlogs(onSnapshot.docs.map(doc=>doc.data().blog))
+  })
+},[])
+    //  console.log(blogs)
   return (
     <>
     <Router>
