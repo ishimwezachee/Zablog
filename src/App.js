@@ -12,7 +12,7 @@ useEffect(()=>{
 db.collection('blogs')
   .onSnapshot(onSnapshot=>{
     // console.log(onSnapshot.docs.map(doc=> doc.data().blog))
-  setBlogs(onSnapshot.docs.map(doc=>doc.data().blog))
+  setBlogs(onSnapshot.docs.map(doc=>({id:doc.id,...doc.data().blog})))
   })
 },[])
     //  console.log(blogs)
