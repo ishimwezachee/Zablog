@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navigation from "./Navigation";
 import db from "../firebase";
+import "../styles/post.css"
 import {
   TextField,
   FormControl,
