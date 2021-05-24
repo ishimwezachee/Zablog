@@ -1,5 +1,4 @@
 import React from "react";
-import db from '../firebase';
 import BlogList from "./BlogList"
 import { Button } from "@material-ui/core";
 import Navigationn from "./Navigation";
@@ -13,6 +12,9 @@ const useStyles = makeStyles({
   },
   link: {
     textDecoration: "none",
+    position:"fixed",
+    bottom:0,
+    right:0,
   },
 });
 
@@ -20,36 +22,12 @@ const useStyles = makeStyles({
 
 const Home = (props) => {
     const {blogs} = props
-
-//   const OnDeleteHandler =()=>{
-//   db.collection("Texts").doc(props.storyObj.id).delete();
-// }
   const classes = useStyles();
   return (
-    <div>
+    <div className="home">
       <Navigationn />
       <BlogList  blogs={blogs}/>
-      {/* <ul>
-        {props.blogs.map((blog) => (
-          <li key={blog.id}>
-            <h2>{blog.title}</h2>
-            <p>{blog.content}</p>
-            <h4>- {blog.author}</h4>
-            <Button type="submit" variant="contained" color="default">
-              Delete
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              edit
-            </Button>
-          </li>
-        ))}
-      </ul> */}
-      {/* <Link className={classes.link} to="/Post">
+      <Link className={classes.link} to="/Post">
         <Button
           type="submit"
           variant="contained"
@@ -58,7 +36,7 @@ const Home = (props) => {
         >
           New Post
         </Button>
-      </Link> */}
+      </Link>
     </div>
   );
 };

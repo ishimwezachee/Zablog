@@ -22,3 +22,7 @@ h3{
     font-size: large;
     font-style: italic;
 }
+.icons{
+    display: flex;
+    justify-content: space-between;
+}
