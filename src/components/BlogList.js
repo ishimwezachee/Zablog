@@ -5,11 +5,13 @@ import Blog from './Blog';
 
 const BlogList =(props)=>{
     const {blogs} = props;
+    console.log(blogs)
     return (
         <ul>
             {
             blogs.map(blog=>(
                 <Blog 
+                id={blog.id}
                 title={blog.title}
                 content={blog.content}
                 author = {blog.author}
